@@ -12,7 +12,7 @@ module.exports = {
         result6fix: {min : "1797px"},
         result5fix: {max : "1606px" , min : "1551px"},
         result4fix: {max : "1344px" , min : "1209"},
-        result6: {min : "1797px"},
+        result6: {min : "1607px"},
         result5: {max : "1606px",min : "1345px"},
         result4: {max : "1344px"},
       },
