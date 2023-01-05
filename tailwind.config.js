@@ -9,12 +9,13 @@ module.exports = {
         sans: ['Spoqa Han Sans Neo', 'sans-serif']
       },
       screens : {
-        result6fix: {min : "1797px"},
-        result5fix: {max : "1606px" , min : "1551px"},
-        result4fix: {max : "1344px" , min : "1209"},
-        result6: {min : "1607px"},
-        result5: {max : "1606px",min : "1345px"},
-        result4: {max : "1344px"},
+        result6fix: {min : "1805px"},
+        result5fix: {max : "1650px" , min : "1559px"},
+        result4fix: {max : "1382px" , min : "1217"},
+        // fix - 줄지 않는 시점
+        result6: {min : "1651px"},
+        result5: {max : "1650px",min : "1383px"},
+        result4: {max : "1382px"},
       },
       backgroundImage : {
         ListIcon : 'url("/public/icons/ListIcon.svg")',
