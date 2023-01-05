@@ -10,7 +10,7 @@ function App() {
         <Routes>
           <Route path = "/" element = {<Home/>}></Route>
           <Route path = "/play" element = {<Play/>}></Route>
-          <Route path = "/search" element = {<Searched/>}></Route>
+          <Route path = "/search/:keyword" element = {<Searched/>}></Route>
         </Routes>
       </BrowserRouter>
     </>
