@@ -15,11 +15,6 @@ const getPlaylists = selector({
         const token = get(spotifyToken)
         const keyword = get(playlistSearchParam)
         if(keyword !== ""){
-            console.log((await axios.get(`${spotifyApi}search?q=${keyword}&type=playlist`,{
-                headers : {
-                  Authorization :`Bearer ${token}`
-                }
-              })).data.playlists.items)
             return (await axios.get(`${spotifyApi}search?q=${keyword}&type=playlist`,{
                 headers : {
                   Authorization :`Bearer ${token}`

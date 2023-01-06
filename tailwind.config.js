@@ -19,7 +19,7 @@ module.exports = {
       },
       backgroundImage : {
         ListIcon : 'url("/public/icons/ListIcon.svg")',
-        NexstSongIcon : 'url("/public/icons/NexstSongIcon.svg")',
+        NexstSongIcon : 'url("/public/icons/NextSongIcon.svg")',
         PauseIcon : 'url("/public/icons/PauseIcon.svg")',
         PlayIcon : 'url("/public/icons/PlayIcon.svg")',
         PrevPageIcon : 'url("/public/icons/PrevPageIcon.svg")',
