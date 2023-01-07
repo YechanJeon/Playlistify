@@ -10,8 +10,8 @@ function PlayerNav() {
   return (
     <div className='ml-24'>
       <div className='text-white'>
-        <div className='text-5xl font-semibold'>{songs[currentSong].title}</div>
-        <div className=' text-2xl font-normal'>{songs[currentSong].artists} · {songs[currentSong].album.title}</div>
+        <div className='text-5xl font-semibold max-w-[600px]'>{songs[currentSong].title}</div>
+        <div className=' text-2xl font-normal max-w-[600px] mt-2'>{songs[currentSong].artists} · {songs[currentSong].album.title}</div>
       </div>
       <div className='flex flex-col justify-center items-center'>
         <div className='w-[600px] h-2 rounded-full bg-white mt-16'></div>

@@ -1,12 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Playlist from "../layout/Playlist"
+import PlayerHeaderNav from './PlayerHeaderNav'
 
 function PlayerHeader() {
+  const [playback , setPlayback] = useState(false)
+
+  const changePlaybackState = () =>{
+    setPlayback(!playback)
+  }
+
   return (
-    <div className='absolute w-screen p-1 flex justify-between'>
-        <div className='w-10 h-10 bg-PrevPageIcon bg-no-repeat bg-cover'></div>
-        <div className='w-10 h-10 bg-ListIcon bg-no-repeat bg-cover'></div>
+    <div className='absolute w-screen p-1 z-10 flex justify-between'>
+      {playback ? <Playlist changePlaybackState = {changePlaybackState}/>: <PlayerHeaderNav changePlaybackState = {changePlaybackState}/>}
     </div>
-  )
+    )
 }
 
 export default PlayerHeader

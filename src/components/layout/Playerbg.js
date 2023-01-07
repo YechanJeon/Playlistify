@@ -9,7 +9,8 @@ function Playerbg() {
 
   return (
     <div className='bg-[#ffffff] w-screen h-screen absolute brightness-75'>
-        <img src = {image} alt = "" className='w-full h-full object-cover blur-2xl'></img>
+        <img src = {image} alt = "" className='w-full h-full object-cover' />
+        <div className='w-full h-full absolute top-0 backdrop-blur-2xl'></div>
     </div>
   )
 }
