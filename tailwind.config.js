@@ -5,6 +5,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors : {
+        eleGray : "#363636",
+        bgGray : "#2c2c2c",
+        selectedGray : "#595959",
+      },
       fontFamily:{
         sans: ['Spoqa Han Sans Neo', 'sans-serif']
       },
