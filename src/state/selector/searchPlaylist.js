@@ -6,13 +6,20 @@ import axios from "axios"
 
 const playlistSearchParam = atom({
     key : "playlistSearchParam",
-    value : ""
+    default : ""
 })
 
 const playlistId = atom({
     key : "playlistID",
-    value : ""
+    default : ""
 })
+
+const currentSongNum = atom({
+    key : "currentSong",
+    default : 0
+})
+
+
 
 
 const getPlaylists = selector({
@@ -38,12 +45,8 @@ const getPlaylistSongs = selector({
         const token = get(spotifyToken)
         const id = get(playlistId)
 
-        let songs = []
-
-
-
         if(id !== ""){
-            songs.push(((await axios.get(`${spotifyApi}playlists/${id}/tracks`,{
+            return (((await axios.get(`${spotifyApi}playlists/${id}/tracks`,{
                 headers : {
                     Authorization :`Bearer ${token}`
                 }
@@ -58,11 +61,10 @@ const getPlaylistSongs = selector({
                 }
                 return song
             }))
-            return songs
         }
 
     }
 })
 
 
-export {playlistSearchParam , getPlaylists , playlistId , getPlaylistSongs}
+export {playlistSearchParam , getPlaylists , playlistId , getPlaylistSongs , currentSongNum}
