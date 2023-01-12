@@ -64,4 +64,17 @@ const getPlaylistSongs = selector({
     }
 })
 
+const currentSongSelector = selector({
+    key : "currentSongSelector" ,
+    get : ({get}) => {
+        const currnetSongNum = get(currentSongNum)
+        const playlistSongs = get(getPlaylistSongs)
+        if(playlistSongs){
+            return playlistSongs[currentSongNum]
+        }else{
+            //예외 처리에 대한 코드 추가
+        }
+    }
+})
+
 export {playlistSearchParam , getPlaylists , playlistId , getPlaylistSongs , currentSongNum , videoStateAtom , videoProgressAtom , videoProgressBarAtom}

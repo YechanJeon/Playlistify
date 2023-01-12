@@ -14,12 +14,12 @@ function Searched() {
     setPlaylistSearchParam(keyword)
   })
   return (
-    <div className='bg-bgGray w-screen h-screen flex flex-col items-center overflow-y-scroll'>
-      <div className='mt-[30px] mb-[52px]'><SearchInput/></div>
-      <Suspense>
-        <SearchResult/>
-      </Suspense>
-    </div>
+      <div className='bg-bgGray w-screen h-screen flex flex-col items-center overflow-y-scroll pb-32'>
+        <div className='mt-[30px] mb-[52px]'><SearchInput/></div>
+        <Suspense>
+          <SearchResult/>
+        </Suspense>
+      </div>
   )
 }
 
