@@ -19,6 +19,19 @@ const currentSongNum = atom({
     default : 0
 })
 
+const videoStateAtom = atom({
+    key : "videoState",
+    default : false
+})
+
+const videoProgressAtom = atom({
+    key : "videoProgressAtom",
+    default : 0
+})
+const videoProgressBarAtom = atom({
+    key : "videoProgressBarAtom",
+    default : 0
+})
 
 
 
@@ -41,30 +54,14 @@ const getPlaylists = selector({
 const getPlaylistSongs = selector({
     key : "playlinstSongs",
     get : async ({get}) => {
-        const {spotifyApi} = get(urls)
-        const token = get(spotifyToken)
+        
         const id = get(playlistId)
 
-        if(id !== ""){
-            return (((await axios.get(`${spotifyApi}playlists/${id}/tracks`,{
-                headers : {
-                    Authorization :`Bearer ${token}`
-                }
-            })).data.items).map(ele => { 
-                let song = {
-                    title : ele.track.name , 
-                    album : {
-                        title : ele.track.album.name,
-                        image : ele.track.album.images[0].url
-                    },
-                    artists : ele.track.artists[0].name
-                }
-                return song
-            }))
+        if(id !== ""){ 
+            return (await axios.get(`http://localhost:8081/search/tracks/${id}`)).data
         }
 
     }
 })
 
-
-export {playlistSearchParam , getPlaylists , playlistId , getPlaylistSongs , currentSongNum}
+export {playlistSearchParam , getPlaylists , playlistId , getPlaylistSongs , currentSongNum , videoStateAtom , videoProgressAtom , videoProgressBarAtom}

@@ -3,7 +3,6 @@ import PlayerNav from "../common/PlayerNav"
 import {useRecoilValue} from "recoil"
 import { getPlaylistSongs , currentSongNum} from '../../state/selector/searchPlaylist'
 
-
 function Player() {
   const currentSong = useRecoilValue(currentSongNum)
   const {image} = useRecoilValue(getPlaylistSongs)[currentSong].album
