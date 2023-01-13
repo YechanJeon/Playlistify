@@ -1,15 +1,14 @@
 import React from 'react'
 import PlayerNav from "../common/PlayerNav"
 import {useRecoilValue} from "recoil"
-import { getPlaylistSongs , currentSongNum} from '../../state/selector/searchPlaylist'
+import { currentSongSelector} from '../../state/selector/searchPlaylist'
 
 function Player() {
-  const currentSong = useRecoilValue(currentSongNum)
-  const {image} = useRecoilValue(getPlaylistSongs)[currentSong].album
+  const song = useRecoilValue(currentSongSelector)
   return (
     <div className="relative flex justify-center items-center h-screen">
       <div className=' w-[500px] h-[500px]'> 
-        <img className = "w-full h-full" src = {image} alt = ""></img>
+        {song ? <img className = "w-full h-full" src = {song.album.image} alt = ""></img> : ""}
       </div>
       <PlayerNav/>
     </div>

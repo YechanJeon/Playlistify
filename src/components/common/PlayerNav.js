@@ -1,11 +1,12 @@
 import React , {useEffect,useRef} from 'react'
 
 import {useRecoilValue , useRecoilState , useSetRecoilState} from "recoil"
-import { getPlaylistSongs , currentSongNum , videoStateAtom , videoProgressAtom , videoProgressBarAtom} from '../../state/selector/searchPlaylist'
+import { currentSongSelector , getPlaylistSongs, currentSongNum , videoStateAtom , videoProgressAtom , videoProgressBarAtom} from '../../state/selector/searchPlaylist'
 
 
 function PlayerNav() {
   const [currentSong, setCurrentSong] = useRecoilState(currentSongNum)
+  const song = useRecoilValue(currentSongSelector)
   const songs = useRecoilValue(getPlaylistSongs)
   // const videoId = useRecoilValue(getYoutubeVideo)
 
@@ -27,8 +28,8 @@ function PlayerNav() {
   return (
     <div className='ml-24'>
       <div className='text-white'>
-        <div className='text-5xl font-semibold max-w-[600px]'>{songs[currentSong].title}</div>
-        <div className=' text-2xl font-normal max-w-[600px] mt-2'>{songs[currentSong].artists} · {songs[currentSong].album.title}</div>
+        <div className='text-5xl font-semibold max-w-[600px]'>{song ? song.title : ""}</div>
+        <div className=' text-2xl font-normal max-w-[600px] mt-2'>{song ? `${song.artists} · ${song.album.title}` : ""} </div>
       </div>
       <div className='flex flex-col justify-center items-center'>
         <input type = "range" min = "0" max = "1000" className="mt-16 w-[600px] h-2" 

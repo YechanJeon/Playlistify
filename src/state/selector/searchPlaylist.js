@@ -56,9 +56,10 @@ const getPlaylistSongs = selector({
     get : async ({get}) => {
         
         const id = get(playlistId)
-
         if(id !== ""){ 
             return (await axios.get(`http://localhost:8081/search/tracks/${id}`)).data
+        }else{
+            return false
         }
 
     }
@@ -67,14 +68,14 @@ const getPlaylistSongs = selector({
 const currentSongSelector = selector({
     key : "currentSongSelector" ,
     get : ({get}) => {
-        const currnetSongNum = get(currentSongNum)
+        const currentSongNums = get(currentSongNum)
         const playlistSongs = get(getPlaylistSongs)
         if(playlistSongs){
-            return playlistSongs[currentSongNum]
+            return playlistSongs[currentSongNums]
         }else{
-            //예외 처리에 대한 코드 추가
+            return false
         }
     }
 })
 
-export {playlistSearchParam , getPlaylists , playlistId , getPlaylistSongs , currentSongNum , videoStateAtom , videoProgressAtom , videoProgressBarAtom}
+export {playlistSearchParam , getPlaylists , playlistId , currentSongSelector , getPlaylistSongs , currentSongNum , videoStateAtom , videoProgressAtom , videoProgressBarAtom}

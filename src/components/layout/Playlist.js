@@ -21,13 +21,13 @@ function Playlist({changePlaybackState}) {
             <div className='bg-XIcon w-8 h-8 bg-cover bg-no-repeat hover:cursor-pointer' onClick={changePlaybackState}></div>
           </div>
           <div className='my-3 h-full overflow-y-scroll scrollbarRemove'>
-            {songs.map((song , index) => {
+            {songs ? songs.map((song , index) => {
               if(index >= currentSong){
                 return (<PlaylistEle title = {song.title} image = {song.album.image} artist = {song.artists} id = {index}/>)
               }else{
                 return(<></>)
               }
-            })}
+            }) : ""}
           </div>
       </div>
   )
