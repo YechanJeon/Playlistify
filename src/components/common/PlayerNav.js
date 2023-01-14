@@ -41,7 +41,6 @@ function PlayerNav() {
   
       
   const changeProgress = value => {
-    console.log("ChangeProgress fuction")
     setVideoProgress(value/1000)
   }
 
