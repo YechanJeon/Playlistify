@@ -34,6 +34,9 @@ module.exports = {
         BlSearchIcon : 'url("/public/icons/BlSearchIcon.svg")',
         VolumeIcon : 'url("/public/icons/VolumeIcon.svg")',
         XIcon : 'url("/public/icons/XIcon.svg")',
+        logo : "url('/public/logos/logo.svg')",
+        logoFull : "url('/public/logos/logo_full.svg')"
+        
       }
     },
   },
