@@ -1,14 +1,16 @@
 // /* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
 import {useSetRecoilState} from "recoil"
-import {playlistId} from "../../state/selector/searchPlaylist"
+import {playlistId, currentSongNum} from "../../state/selector/searchPlaylist"
 
 import {useNavigate} from "react-router-dom"
 
 function SearchResultEle({name , image, id , owner}) {
   const navigate = useNavigate()
   const setPlaylistId = useSetRecoilState(playlistId)
+  const setCurrentSongNum = useSetRecoilState(currentSongNum)
   const playPlaylist = () => {
+    setCurrentSongNum(0)
     setPlaylistId(id)
     navigate("/play")
   } 

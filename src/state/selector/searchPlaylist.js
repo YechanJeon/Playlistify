@@ -19,18 +19,30 @@ const currentSongNum = atom({
     default : 0
 })
 
+const videoProgressAtom = atom({
+    key : "videoProgressAtom",
+    default : 0
+})
+
 const videoStateAtom = atom({
     key : "videoState",
     default : false
 })
 
-const videoProgressAtom = atom({
-    key : "videoProgressAtom",
-    default : 0
+
+const totalLengthAtom = atom({
+    key : "videoTotalLength",
+    default : "0:00"
 })
+
+const currentDurationAtom = atom({
+    key : "currentDuration", 
+    default : "0:00"
+})
+
 const videoProgressBarAtom = atom({
     key : "videoProgressBarAtom",
-    default : 0
+    default : -1
 })
 
 
@@ -78,4 +90,4 @@ const currentSongSelector = selector({
     }
 })
 
-export {playlistSearchParam , getPlaylists , playlistId , currentSongSelector , getPlaylistSongs , currentSongNum , videoStateAtom , videoProgressAtom , videoProgressBarAtom}
+export {playlistSearchParam , getPlaylists , playlistId , currentSongSelector , getPlaylistSongs , currentSongNum , videoStateAtom , videoProgressAtom , videoProgressBarAtom , totalLengthAtom,currentDurationAtom}

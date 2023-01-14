@@ -1,34 +1,76 @@
-import React , {useRef, useEffect} from 'react'
+import React , {useRef, useEffect , useState} from 'react'
 
 import ReactPlayer from "react-player"
 import {useRecoilValue, useSetRecoilState , useRecoilState} from "recoil"
-import { currentSongSelector , videoProgressAtom, videoStateAtom , currentSongNum} from '../../state/selector/searchPlaylist';
+import { currentSongSelector , videoProgressAtom, videoStateAtom , currentSongNum , videoProgressBarAtom , totalLengthAtom , currentDurationAtom} from '../../state/selector/searchPlaylist';
 
 function VideoPlayer() {
     const song = useRecoilValue(currentSongSelector)
     const videoState = useRecoilValue(videoStateAtom)
-    const videoProgressBarNewVal = useRecoilValue(videoStateAtom)
+    const [videoProgressBarNewVal, setVideoProgressBarNewVal] = useRecoilState(videoProgressBarAtom)
     const setVideoProgress = useSetRecoilState(videoProgressAtom)
     const [currentSong, setCurrentSong] = useRecoilState(currentSongNum)
-
+    const setTotalLength = useSetRecoilState(totalLengthAtom)
+    const setCurrentDuration = useSetRecoilState(currentDurationAtom)
+    
+    const [videoUrl , setVideoUrl] = useState ("")
+    
     const video = useRef()
 
     const changeProgress = (e) => {
+        const currentTime  = Math.floor(video.current.getCurrentTime())
         setVideoProgress(e.played)
+        if(currentTime >59){
+            setCurrentDuration(`${Math.floor(currentTime/60)}:${currentTime%60<10 ?`0${currentTime%60}` : currentTime%60 }`)
+        }else{
+            setCurrentDuration(`0:${currentTime%60<10 ?`0${currentTime%60}` : currentTime%60 }`)
+        }
+    }
+    const getVideoLength = () => {
+        const durationSec = video.current.getDuration()-1
+        if(durationSec>59){
+            const duration  = `${Math.floor(durationSec/60)}:${durationSec%60<10 ?`0${durationSec%60}` : durationSec%60 }`
+            setTotalLength(duration)
+        }else{
+            const duration = `0:${durationSec%60<10 ?`0${durationSec%60}` : durationSec%60 }`
+            setTotalLength(duration)
+        }
     }
 
     useEffect(() => {
-        video.current.seekTo(videoProgressBarNewVal)
-    }, [videoProgressBarNewVal])
+        console.log("Progress Change")
+        if(videoProgressBarNewVal !== -1){
+            video.current.seekTo(videoProgressBarNewVal)  
+        }
+        setVideoProgressBarNewVal(-1)
+    }, [setVideoProgressBarNewVal, videoProgressBarNewVal])
+
+
+
+
+    useEffect(() => {
+        const currentTime  = Math.floor(video.current.getCurrentTime())
+        if(currentTime >59){
+            setCurrentDuration(`${Math.floor(currentTime/60)}:${currentTime%60<10 ?`0${currentTime%60}`:currentTime%60 }`)
+        }else{
+            setCurrentDuration(`0:${currentTime%60<10 ?`0${currentTime%60}` : currentTime%60 }`)
+        }
+    } , [setCurrentDuration])
+
+
+    useEffect(()=> {
+        setVideoUrl(`https://youtu.be/${song.id}`)
+    },[song])
   return (
     <>
         <ReactPlayer 
-        url = {song ? `https://youtu.be/${song.id}` : ""} 
+        url = {videoUrl} 
         playing = {videoState} 
         ref = {video} 
         onProgress = {e=> changeProgress(e)} 
         id = "videoPlayer"
         onEnded = {() => setCurrentSong(currentSong+1)}
+        onReady = {() => getVideoLength()}
       />
     </>
   )
