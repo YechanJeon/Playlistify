@@ -6,7 +6,7 @@ import { currentSongSelector , videoProgressAtom, videoStateAtom , currentSongNu
 
 function VideoPlayer() {
     const song = useRecoilValue(currentSongSelector)
-    const videoState = useRecoilValue(videoStateAtom)
+    const [videoState , setVideoState] = useRecoilState(videoStateAtom)
     const [videoProgressBarNewVal, setVideoProgressBarNewVal] = useRecoilState(videoProgressBarAtom)
     const setVideoProgress = useSetRecoilState(videoProgressAtom)
     const [currentSong, setCurrentSong] = useRecoilState(currentSongNum)
@@ -71,6 +71,8 @@ function VideoPlayer() {
         id = "videoPlayer"
         onEnded = {() => setCurrentSong(currentSong+1)}
         onReady = {() => getVideoLength()}
+        onPause = { () => setVideoState(false)}
+        onPlay = { () => setVideoState(true)}
       />
     </>
   )

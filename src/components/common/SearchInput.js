@@ -20,6 +20,12 @@ function SearchInput() {
   }, [currentParam])
 
   const navigate = useNavigate();
+
+  const search = (e) => {
+    if(e.keyCode===13&&searchContent!==""){
+      navigate(`/search/${searchContent}`)
+    }
+  }
   
   return (
 
@@ -29,6 +35,7 @@ function SearchInput() {
           onInput = {e => setSearchContent(e.target.value)} 
           value = {searchContent}
           ref = {searchInput}
+          onKeyDown = {(e) => search(e)}
           ></input>
           <button className='w-10 h-10 rounded-full bg-BlSearchIcon bg-no-repeat bg-center'
           onClick = {() => navigate(`/search/${searchContent}`)}

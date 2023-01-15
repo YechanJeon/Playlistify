@@ -50,8 +50,8 @@ input[type="range"] {
     width: 8px; /* 1 */
     height: 8px;
     border-radius: 9999px;
-    background: rgb(120, 120, 120);
-    box-shadow: -604px 0 0 600px rgb(120, 120, 120); /* 2 */
+    background: rgb(180, 180, 180);
+    box-shadow: -604px 0 0 600px rgb(180, 180, 180); /* 2 */
 }
 
 ::-moz-range-track {

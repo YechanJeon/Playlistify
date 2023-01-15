@@ -1,8 +1,8 @@
-import React , {useEffect,useRef , useState} from 'react'
+import React , {useEffect,useRef} from 'react'
 
 import {useRecoilValue , useRecoilState , useSetRecoilState} from "recoil"
 import { currentSongSelector 
-  , getPlaylistSongs
+
   , currentSongNum
   , videoStateAtom
   , videoProgressAtom 
@@ -15,7 +15,7 @@ import { currentSongSelector
 function PlayerNav() {
   const [currentSong, setCurrentSong] = useRecoilState(currentSongNum)
   const song = useRecoilValue(currentSongSelector)
-  const songs = useRecoilValue(getPlaylistSongs)
+  // const songs = useRecoilValue(getPlaylistSongs)
   // const videoId = useRecoilValue(getYoutubeVideo)
 
   const totalLength = useRecoilState(totalLengthAtom)
@@ -31,6 +31,14 @@ function PlayerNav() {
   useEffect(()=>{
     seekBar.current.value=videoProgress*1000
   } , [videoProgress])
+
+  useEffect(() => {
+    window.addEventListener("keydown" , (e) => {
+      if(e.keyCode===32){
+        setVideoState(!videoState)
+      }
+    })
+  })
 
   
   const nextSong = () => {

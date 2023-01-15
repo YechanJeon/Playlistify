@@ -1,4 +1,4 @@
-import React , {useEffect , useRef , useCallback} from 'react'
+import React , {useEffect , useRef} from 'react'
 import { videoProgressAtom,
         videoProgressBarAtom,
         videoStateAtom ,
@@ -33,6 +33,14 @@ function MiniPlayerNav() {
   const nextSong = () => {
     setCurrentSong(currentSong+1)
   }
+
+  useEffect(() => {
+    window.addEventListener("keydown" , (e) => {
+      if(e.keyCode===32){
+        setVideoState(!videoState)
+      }
+    })
+  })
 
   useEffect(() => {
     seekBar.current.value = videoProgress*1000
