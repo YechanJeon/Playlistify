@@ -45,22 +45,22 @@ const videoProgressBarAtom = atom({
     default : -1
 })
 
+const playlistOffsetAtom = atom({
+    key : "palylistOffset", 
+    default : 0
+})
 
 
 const getPlaylists = selector({
     key : "getPlaylists",
     get : async ({get}) => {
-        const {spotifyApi} = get(urls)
-        const token = get(spotifyToken)
+        const offset = get(playlistOffsetAtom)
         const keyword = get(playlistSearchParam)
+        // console.log((await axios.get(`http://localhost:8081/search/playlist/${keyword}?offset=${offset}`)).data)
         if(keyword !== ""){
-            return (await axios.get(`${spotifyApi}search?q=${keyword}&type=playlist`,{
-                headers : {
-                  Authorization :`Bearer ${token}`
-                }
-              })).data.playlists.items
+            return (await axios.get(`http://localhost:8081/search/playlist/${keyword}?offset=${offset}`)).data
         }
-    }
+    },
 })
 
 const getPlaylistSongs = selector({
@@ -90,4 +90,4 @@ const currentSongSelector = selector({
     }
 })
 
-export {playlistSearchParam , getPlaylists , playlistId , currentSongSelector , getPlaylistSongs , currentSongNum , videoStateAtom , videoProgressAtom , videoProgressBarAtom , totalLengthAtom,currentDurationAtom}
+export {playlistSearchParam , getPlaylists , playlistId , currentSongSelector , getPlaylistSongs , currentSongNum , videoStateAtom , videoProgressAtom , videoProgressBarAtom , totalLengthAtom,currentDurationAtom , playlistOffsetAtom}

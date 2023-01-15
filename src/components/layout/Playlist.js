@@ -15,7 +15,7 @@ function Playlist({changePlaybackState}) {
 
 
   return (
-    <div className='w-[400px] h-screen px-4 absolute top-0 right-0 z-10 flex flex-col' style = {{background : "rgba(0,0,0,0.4)"}}>
+    <div className='w-[400px] h-screen px-4 absolute top-0 right-0 z-10 flex flex-col' style = {{background : "rgba(0,0,0,0.8)"}}>
           <div className='flex mt-5 justify-between items-center ' >
             <div className=' text-4xl text-white font-medium'>재생대기</div>
             <div className='bg-XIcon w-8 h-8 bg-cover bg-no-repeat hover:cursor-pointer' onClick={changePlaybackState}></div>

@@ -49,7 +49,7 @@ function MiniPlayerNav() {
             }
             <div className='w-7 h-7 bg-NexstSongIcon bg-no-repeat bg-cover hover:cursor-pointer' onClick = {() => nextSong()}></div>
         </div>
-        <div className='w-[700px]'>
+        <div className='w-[600px]'>
           <div className='flex justify-between w-full text-white mb-[-8px] text-sm'>
             <div>{currentDuration}</div>
             <div>{totalLength}</div>

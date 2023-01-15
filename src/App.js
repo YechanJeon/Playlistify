@@ -1,7 +1,6 @@
-import { Suspense} from 'react';
+import { Suspense , lazy} from 'react';
 import {BrowserRouter , Routes, Route} from 'react-router-dom'
 import Home from "./pages/Home"
-import Play from './pages/Play';
 import Searched from './pages/Searched';
 import MainPage from "./pages/MainPage"
 import VideoPlayer from './components/common/VideoPlayer';
@@ -9,8 +8,9 @@ import VideoPlayer from './components/common/VideoPlayer';
 
 
 function App() {
+  const Play = lazy(() => import('./pages/Play'))
   return (
-    <>
+    <div className='w-screen h-screen overflow-hidden'>
       <BrowserRouter>
         <Routes>
           <Route path = "/" element = {<MainPage/>}>
@@ -24,7 +24,7 @@ function App() {
       <VideoPlayer/>
     </Suspense>
 
-    </>
+    </div>
   );
 }
 

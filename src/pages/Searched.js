@@ -15,17 +15,17 @@ function Searched() {
     setPlaylistSearchParam(keyword)
   })
   return (
-      <div className='bg-bgGray w-screen h-screen flex flex-col items-center overflow-y-scroll pb-32'>
-        <div className='mt-[30px] mb-[52px] flex'>
+      <div className='bg-bgGray w-screen h-screen flex flex-col items-center'>
+        <div className='my-[30px] flex'>
         <div
         className='w-12 h-12 bg-logo bg-cover bg-no-repeat mr-2 hover:cursor-pointer'
         onClick={() => navigate("/")}
         />
         <SearchInput/>
         </div>
-        <Suspense>
+        {/* <Suspense> */}
           <SearchResult/>
-        </Suspense>
+        {/* </Suspense> */}
       </div>
   )
 }

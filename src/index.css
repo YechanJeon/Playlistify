@@ -17,19 +17,8 @@
 
 body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
 
-/* 
-.scrollbarRemove{
-    width: 200px; 
-    height: 200px;
-    background-color:skyblue;
-    overflow-y: scroll; */
-
-    /* -ms-overflow-style: none; 인터넷 익스플로러 */
-    /* scrollbar-width: none; 파이어폭스 */
-/* } */
-
 .scrollbarRemove::-webkit-scrollbar {
-    display: none; /* 크롬, 사파리, 오페라, 엣지 */
+    display: none; 
 }
 
 *:focus{
