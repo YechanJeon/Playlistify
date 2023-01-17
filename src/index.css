@@ -56,22 +56,22 @@ input[type="range"] {
 
 ::-moz-range-track {
     height: 40px;
-    background: #ddd;
+    background: rgb(180, 180, 180);;
 }
 
 ::-moz-range-thumb {
-    background: #fff;
+    background: rgb(180, 180, 180);;
     height: 8px;
     width: 8px;
     /* border: 3px solid #999; */
     border: 0;
     border-radius: 999999px;
-    box-shadow: -604px 0 0 600px dodgerblue;
+    box-shadow: -604px 0 0 600px rgb(180, 180, 180);;
     box-sizing: border-box;
 }
 
 ::-ms-fill-lower { 
-    background: dodgerblue;
+    background: rgb(180, 180, 180);;
 }
 
 ::-ms-thumb { 

@@ -34,7 +34,7 @@ function PlayerNav() {
 
   useEffect(() => {
     window.addEventListener("keydown" , (e) => {
-      if(e.keyCode===32){
+      if(e.keyCode===32&&document.activeElement.tagName!=="INPUT"){
         setVideoState(!videoState)
       }
     })

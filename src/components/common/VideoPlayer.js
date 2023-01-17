@@ -2,7 +2,7 @@ import React , {useRef, useEffect , useState} from 'react'
 
 import ReactPlayer from "react-player"
 import {useRecoilValue, useSetRecoilState , useRecoilState} from "recoil"
-import { currentSongSelector , videoProgressAtom, videoStateAtom , currentSongNum , videoProgressBarAtom , totalLengthAtom , currentDurationAtom} from '../../state/selector/searchPlaylist';
+import {getTrackId, currentSongSelector , videoProgressAtom, videoStateAtom , currentSongNum , videoProgressBarAtom , totalLengthAtom , currentDurationAtom} from '../../state/selector/searchPlaylist';
 
 function VideoPlayer() {
     const song = useRecoilValue(currentSongSelector)
@@ -16,6 +16,7 @@ function VideoPlayer() {
     const [videoUrl , setVideoUrl] = useState ("")
     
     const video = useRef()
+    const videoId = useRecoilValue(getTrackId)
 
     const changeProgress = (e) => {
         const currentTime  = Math.floor(video.current.getCurrentTime())
@@ -38,7 +39,7 @@ function VideoPlayer() {
     }
 
     useEffect(() => {
-        console.log("Progress Change")
+
         if(videoProgressBarNewVal !== -1){
             video.current.seekTo(videoProgressBarNewVal)  
         }
@@ -59,10 +60,13 @@ function VideoPlayer() {
 
 
     useEffect(()=> {
-        setVideoUrl(`https://youtu.be/${song.id}`)
+        setVideoUrl(`https://youtu.be/${videoId}`)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[song])
   return (
-    <>
+      <>
+      {videoState}
+    {videoUrl}
         <ReactPlayer 
         url = {videoUrl} 
         playing = {videoState} 

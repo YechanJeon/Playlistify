@@ -1,6 +1,4 @@
 import {atom , selector} from "recoil"
-import spotifyToken from "../selector/spotifyToken"
-import urls from "../atoms/urls"
 import axios from "axios"
 
 
@@ -50,6 +48,11 @@ const playlistOffsetAtom = atom({
     default : 0
 })
 
+const miniPlayerStateAtom = atom({
+    key : "miniplayerState",
+    default : false
+})
+
 
 const getPlaylists = selector({
     key : "getPlaylists",
@@ -90,4 +93,14 @@ const currentSongSelector = selector({
     }
 })
 
-export {playlistSearchParam , getPlaylists , playlistId , currentSongSelector , getPlaylistSongs , currentSongNum , videoStateAtom , videoProgressAtom , videoProgressBarAtom , totalLengthAtom,currentDurationAtom , playlistOffsetAtom}
+const getTrackId = selector({
+    key : "getTrackId",
+    get : async ({get}) => {
+        const track = get(currentSongSelector)
+        if(track){
+            return (await axios.get(`http://localhost:8081/search/track?title=${track.title}&artist=${track.artists}`)).data
+        }
+    }
+})
+
+export {playlistSearchParam , getTrackId , getPlaylists , playlistId , miniPlayerStateAtom , currentSongSelector , getPlaylistSongs , currentSongNum , videoStateAtom , videoProgressAtom , videoProgressBarAtom , totalLengthAtom,currentDurationAtom , playlistOffsetAtom}

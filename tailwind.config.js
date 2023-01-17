@@ -35,8 +35,9 @@ module.exports = {
         VolumeIcon : 'url("/public/icons/VolumeIcon.svg")',
         XIcon : 'url("/public/icons/XIcon.svg")',
         logo : "url('/public/logos/logo.svg')",
-        logoFull : "url('/public/logos/logo_full.svg')"
-        
+        logoFull : "url('/public/logos/logo_full.svg')",
+        HideIcon : 'url("/public/icons/HideIcon.svg")',
+        ShowIcon : 'url("/public/icons/ShowIcon.svg")',
       }
     },
   },

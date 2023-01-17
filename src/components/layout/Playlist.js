@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react'
+import React from 'react'
 import PlaylistEle from '../common/PlaylistEle'
 import {getPlaylistSongs,currentSongNum} from "../../state/selector/searchPlaylist"
 import {useRecoilValue} from "recoil"
@@ -8,10 +8,6 @@ function Playlist({changePlaybackState}) {
   const currentSong = useRecoilValue(currentSongNum)
   const songs = useRecoilValue(getPlaylistSongs)
   
-  useEffect(()=>{
-    console.log(songs)
-    console.log(currentSong)
-  })
 
 
   return (

@@ -10,6 +10,7 @@ function SearchResultEle({name , image, id , owner}) {
   const setPlaylistId = useSetRecoilState(playlistId)
   const setCurrentSongNum = useSetRecoilState(currentSongNum)
   const playPlaylist = () => {
+    // setVideoState(false)
     setCurrentSongNum(0)
     setPlaylistId(id)
     navigate("/play")

@@ -20,7 +20,6 @@ function SearchResult() {
   },[playlistSearchKeyword])
 
   useEffect(() => {
-    console.log(2)
     // console.log(loadedPlaylist[0])
     if(loadedPlaylist.state==="hasValue"){
     if(loadedPlaylist.contents===[]){
@@ -37,7 +36,7 @@ function SearchResult() {
 
 
   const searchedScroll = (e) => {
-    if(e.target.scrollTop === e.target.scrollHeight-860){
+    if(e.target.scrollTop >= e.target.scrollHeight-window.innerHeight+100){
       setPlaylistOffset(playlistOffset+1)
     }
   }
